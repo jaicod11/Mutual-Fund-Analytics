@@ -1,14 +1,8 @@
 import pandas as pd
 import os
 
-# ──────────────────────────────────────────────
-# PATH TO RAW DATA
-# ──────────────────────────────────────────────
 raw_path = "data/raw/"
 
-# ──────────────────────────────────────────────
-# ALL 10 CSV FILES WITH EXACT NAMES
-# ──────────────────────────────────────────────
 csv_files = {
     "fund_master":          "01_fund_master.csv",
     "nav_history":          "02_nav_history.csv",
@@ -41,9 +35,6 @@ for name, filename in csv_files.items():
     print(f"   Nulls   :\n{df.isnull().sum().to_string()}")
     print("-" * 60)
 
-# ──────────────────────────────────────────────
-# FUND MASTER — UNIQUE VALUES
-# ──────────────────────────────────────────────
 print("\n" + "=" * 60)
 print("  FUND MASTER — UNIQUE VALUES")
 print("=" * 60)
@@ -57,9 +48,6 @@ print(f"\nSub-Categories: {list(fm['sub_category'].unique())}")
 print(f"\nRisk Categories: {list(fm['risk_category'].unique())}")
 print(f"\nSEBI Category Codes: {list(fm['sebi_category_code'].unique())}")
 
-# ──────────────────────────────────────────────
-# AMFI CODE VALIDATION
-# ──────────────────────────────────────────────
 print("\n" + "=" * 60)
 print("  AMFI CODE VALIDATION")
 print("=" * 60)
@@ -74,9 +62,6 @@ print(f"Total codes in nav_history  : {len(history_codes)}")
 print(f"Codes MISSING from nav_history: {missing_in_history if missing_in_history else 'None ✅'}")
 print(f"Extra codes in nav_history   : {extra_in_history if extra_in_history else 'None ✅'}")
 
-# ──────────────────────────────────────────────
-# DATA QUALITY SUMMARY
-# ──────────────────────────────────────────────
 print("\n" + "=" * 60)
 print("  DATA QUALITY SUMMARY")
 print("=" * 60)

@@ -2,9 +2,6 @@ import requests
 import pandas as pd
 import os
 
-# ──────────────────────────────────────────────
-# SCHEMES TO FETCH
-# ──────────────────────────────────────────────
 schemes = {
     "HDFC_Top100_Direct": 125497,
     "SBI_Bluechip":        119551,
@@ -32,12 +29,10 @@ for name, code in schemes.items():
 
     data = response.json()
 
-    # Parse JSON response
-    df = pd.DataFrame(data["data"])   # columns: 'date', 'nav'
+    df = pd.DataFrame(data["data"])
     df["scheme_name"] = name
     df["scheme_code"] = code
 
-    # Save to CSV
     output_path = f"data/raw/nav_{name}.csv"
     df.to_csv(output_path, index=False)
 
