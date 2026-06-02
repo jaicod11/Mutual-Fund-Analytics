@@ -1,5 +1,8 @@
+cat > .gitignore << EOF
 venv/
 .DS_Store
 __pycache__/
 *.pyc
+*.pyo
 data/raw/*.csv
+EOF
