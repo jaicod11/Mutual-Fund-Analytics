@@ -1,9 +1,3 @@
--- ============================================================
--- DAY 2 — 10 Analytical SQL Queries
--- Database: bluestock_mf.db
--- ============================================================
-
-
 -- ── QUERY 1: Top 5 Funds by AUM ─────────────────────────────
 -- Shows which fund houses manage the most money
 SELECT

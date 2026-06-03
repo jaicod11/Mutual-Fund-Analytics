@@ -5,16 +5,15 @@ import os
 processed_path = "data/processed/"
 DB_PATH        = "bluestock_mf.db"
 
-# Create SQLite engine
+# Creating SQLite engine
 engine = create_engine(f"sqlite:///{DB_PATH}")
 
 print("=" * 60)
 print("  DAY 2 — LOADING DATA INTO SQLITE")
 print("=" * 60)
 
-# ──────────────────────────────────────────────
-# STEP 1: Create schema from schema.sql
-# ──────────────────────────────────────────────
+# 1. Creating schema from schema.sql
+
 print("\n📐 Creating schema ...")
 with open("sql/schema.sql", "r") as f:
     schema_sql = f.read()
@@ -27,9 +26,8 @@ with engine.connect() as conn:
     conn.commit()
 print("   ✅ Schema created")
 
-# ──────────────────────────────────────────────
-# STEP 2: Load each cleaned CSV into SQLite
-# ──────────────────────────────────────────────
+# STEP 2: Loading each cleaned CSV into SQLite
+
 tables = {
     "dim_fund":          ("01_fund_master.csv",          "amfi_code"),
     "fact_nav":          ("02_nav_history.csv",           "amfi_code"),
@@ -50,9 +48,8 @@ for table_name, (filename, _) in tables.items():
     df.to_sql(table_name, engine, if_exists="replace", index=False)
     print(f"   ✅ {table_name:25s} → {len(df):6,} rows")
 
-# ──────────────────────────────────────────────
-# STEP 3: Verify row counts match source CSVs
-# ──────────────────────────────────────────────
+# 3. Verify row counts match source CSVs
+
 print("\n🔍 Verifying row counts ...")
 with engine.connect() as conn:
     for table_name, (filename, _) in tables.items():

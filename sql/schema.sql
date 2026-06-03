@@ -1,7 +1,3 @@
--- ============================================================
--- DAY 2 — SQLite Star Schema for Mutual Fund Analytics
--- ============================================================
-
 -- ── DIMENSION: Fund Master ──────────────────────────────────
 CREATE TABLE IF NOT EXISTS dim_fund (
     amfi_code           INTEGER PRIMARY KEY,
