@@ -5,4 +5,4 @@ __pycache__/
 *.pyc
 *.pyo
 data/raw/*.csv
-EOF
+EOF*.db
