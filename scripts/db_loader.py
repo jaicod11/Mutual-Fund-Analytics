@@ -3,7 +3,8 @@ from sqlalchemy import create_engine, text
 import os
 
 processed_path = "data/processed/"
-DB_PATH        = "bluestock_mf.db"
+os.makedirs("data/db", exist_ok=True)
+DB_PATH = "data/db/bluestock_mf.db"
 
 # Creating SQLite engine
 engine = create_engine(f"sqlite:///{DB_PATH}")
